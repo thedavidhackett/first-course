@@ -5,12 +5,12 @@ class SocialFeed extends Component
     constructor(props) {
         super(props);
         this.state = {
-            posts : props.post,
+            posts : props.posts,
         }
     }
 
     render() {
-        const { posts } = this.posts;
+        const { posts } = this.state;
         return (
             <div class="row">
                 <div class="col">

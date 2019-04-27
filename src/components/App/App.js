@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
-import Profile from '../ProfilePage/Profile';
+import ProfilePage from '../ProfilePage';
+import SocialFeedPage from '../SocialFeedPage';
 import './App.css';
 import {
   Collapse,
@@ -13,6 +14,10 @@ import {
   DropdownToggle,
   DropdownMenu,
   DropdownItem } from 'reactstrap';
+import {
+  BrowserRouter as Router,
+  Route,
+  Link } from 'react-router-dom';
 
 const david = {
   name: 'David Hackett',
@@ -39,40 +44,43 @@ class App extends Component {
   render() {
     const { user } = this.state;
     return (
-      <div>
-        <Navbar color="dark" light expand="md">
-          <NavbarBrand href="/">reactstrap</NavbarBrand>
-          <NavbarToggler onClick={this.toggle} />
-          <Collapse isOpen={this.state.isOpen} navbar>
-            <Nav className="ml-auto" navbar>
-              <NavItem>
-                <NavLink href="/components/">Components</NavLink>
-              </NavItem>
-              <NavItem>
-                <NavLink href="https://github.com/reactstrap/reactstrap">GitHub</NavLink>
-              </NavItem>
-              <UncontrolledDropdown nav inNavbar>
-                <DropdownToggle nav caret>
-                  Options
-                </DropdownToggle>
-                <DropdownMenu right>
-                  <DropdownItem>
-                    Option 1
-                  </DropdownItem>
-                  <DropdownItem>
-                    Option 2
-                  </DropdownItem>
-                  <DropdownItem divider />
-                  <DropdownItem>
-                    Reset
-                  </DropdownItem>
-                </DropdownMenu>
-              </UncontrolledDropdown>
-            </Nav>
-          </Collapse>
-        </Navbar>
-        <Profile user = {user} />
-      </div>
+      <Router>
+        <div>
+          <Navbar color="dark" light expand="md">
+            <NavbarBrand href="/">reactstrap</NavbarBrand>
+            <NavbarToggler onClick={this.toggle} />
+            <Collapse isOpen={this.state.isOpen} navbar>
+              <Nav className="ml-auto" navbar>
+                <NavItem>
+                  <NavLink><Link to="/">Home</Link></NavLink>
+                </NavItem>
+                <NavItem>
+                  <NavLink><Link to="/social">Social</Link></NavLink>
+                </NavItem>
+                <UncontrolledDropdown nav inNavbar>
+                  <DropdownToggle nav caret>
+                    Options
+                  </DropdownToggle>
+                  <DropdownMenu right>
+                    <DropdownItem>
+                      Option 1
+                    </DropdownItem>
+                    <DropdownItem>
+                      Option 2
+                    </DropdownItem>
+                    <DropdownItem divider />
+                    <DropdownItem>
+                      Reset
+                    </DropdownItem>
+                  </DropdownMenu>
+                </UncontrolledDropdown>
+              </Nav>
+            </Collapse>
+          </Navbar>
+          <Route path="/" exact component={ProfilePage} />
+          <Route path="/social" component={SocialFeedPage} />
+        </div>
+      </Router>
     );
   }
 }
