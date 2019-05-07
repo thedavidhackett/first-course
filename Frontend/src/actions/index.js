@@ -1,5 +1,10 @@
-import { GET_POSTS } from "../constants"
+import { GET_POSTS, REQUEST_POSTS } from "../constants"
 
-export function getPosts(payload) {
-    return { type: GET_POSTS, payload }
+export function requestPosts() {
+    return {
+        type: REQUEST_POSTS,
+    }
+};
+export function getPosts(posts) {
+    return { type: GET_POSTS, posts }
 };

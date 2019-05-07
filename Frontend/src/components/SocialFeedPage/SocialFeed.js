@@ -1,4 +1,6 @@
 import React, { Component } from 'react';
+import { requestPosts } from '../../actions';
+import axios from 'axios';
 
 class SocialFeed extends Component
 {
@@ -7,6 +9,13 @@ class SocialFeed extends Component
         this.state = {
             posts : props.posts,
         }
+    }
+
+    componentDidMount() {
+        const {dispatch} = this.props;
+        dispatch(requestPosts());
+        const testPosts = axios.get('localhost:3001/api/posts').then( response => {return response.data})
+        console.log(testPosts);
     }
 
     render() {

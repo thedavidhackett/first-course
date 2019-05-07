@@ -12,8 +12,8 @@ class Profile extends Component
     render() {
         const { user } = this.state;
         return (
-            <div class="row">
-                <div class="col">
+            <div className="row">
+                <div className="col">
                     <div><img src={user.avatar} alt=""></img></div>
                     <div><p>{user.name}</p></div>
                     <div><p>{user.birthDate}</p></div>

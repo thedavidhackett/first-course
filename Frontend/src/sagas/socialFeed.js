@@ -1,5 +1,5 @@
 import { call, put, takeLatest } from 'redux-saga/effects';
-import { GET_POSTS } from "../constants";
+import { REQUEST_POSTS } from "../constants";
 import { getPosts } from '../actions';
 import { api, transformApiException } from '../api';
 
@@ -17,7 +17,7 @@ function* fetchPosts(action) {
 }
 
 function* socialFeedSaga() {
-    yield takeLatest(GET_POSTS, fetchPosts);
+    yield takeLatest(REQUEST_POSTS, fetchPosts);
 }
 
 export default socialFeedSaga;
