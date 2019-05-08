@@ -1,10 +1,5 @@
-import { GET_POSTS, REQUEST_POSTS } from "../constants"
+import { ADD_POST } from "../constants/action-types"
 
-export function requestPosts() {
-    return {
-        type: REQUEST_POSTS,
-    }
-};
-export function getPosts(posts) {
-    return { type: GET_POSTS, posts }
-};
+export function addPost(payload) {
+    return { type: ADD_POST, payload }
+  };
