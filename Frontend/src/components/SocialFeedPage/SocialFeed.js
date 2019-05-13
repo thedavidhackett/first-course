@@ -1,11 +1,17 @@
 import React, { Component } from 'react';
 import PostFormContainer from '../PostForm';
+import { getPosts } from '../../actions';
 
 
 class SocialFeed extends Component
 {
     constructor(props) {
         super(props);
+    }
+
+    componentDidMount() {
+        const {dispatch} = this.props;
+        dispatch(getPosts());
     }
 
 

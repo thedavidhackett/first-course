@@ -1,4 +1,4 @@
-import { ADD_POST } from "../constants/action-types"
+import { ADD_POST, POSTS_LOADED } from "../constants/action-types"
 
 
 const initialState = {
@@ -10,6 +10,11 @@ const initialState = {
         return Object.assign({}, state, {
             posts: state.posts.concat(action.payload)
         });
+    }
+    if (action.type === POSTS_LOADED) {
+      return Object.assign({}, state, {
+        posts: action.payload
+      });
     }
     return state;
   };
